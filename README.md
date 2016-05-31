@@ -1,4 +1,4 @@
-# ELKeychain
+# ELKeychain [![Build Status](https://travis-ci.org/Electrode-iOS/ELKeychain.svg?branch=master)](https://travis-ci.org/Electrode-iOS/ELKeychain)
 
 A Swift framework for storing, retrieving, and removing generic password items in the system Keychain.
 
