@@ -8,28 +8,6 @@
 
 import Foundation
 
-public struct TouchIDPasswordItem {
-    public var account: String
-    public var service: String
-    public var data: NSData
-    public var accessControl: SecAccessControl
-    
-    public init(data: NSData, account: String, service: String) throws {
-        self.data = data
-        self.account = account
-        self.service = service
-        
-        var accessControlError: Unmanaged<CFError>?
-        
-        guard let control = SecAccessControlCreateWithFlags(kCFAllocatorDefault,
-                                                            kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
-                                                            .UserPresence, &accessControlError)
-        else { throw KeychainError.failedToCreateAccessControl }
-        
-        self.accessControl = control
-    }
-}
-
 /// Provides access to the system keychain for storing, retrieving, and removing generic password items.
 public final class Keychain {
     private static func delete(matching query: CFDictionary) throws {
