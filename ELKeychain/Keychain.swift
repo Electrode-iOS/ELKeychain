@@ -14,7 +14,8 @@ public final class Keychain {
         let status = SecItemAdd(attributes, nil)
         
         if status != noErr {
-            throw KeychainError.failedToAddItem(status: status)
+            let error = KeychainError(status: status) ?? .unexpectedFailure
+            throw error
         }
     }
     
@@ -31,7 +32,8 @@ public final class Keychain {
             return result
         
         default:
-            throw KeychainError.failedToCopyItem(status: status)
+            let error = KeychainError(status: status) ?? .unexpectedFailure
+            throw error
         }
     }
     
@@ -39,7 +41,8 @@ public final class Keychain {
         let status = SecItemDelete(query) // delete first because adding a duplicate item results in an error
         
         if status != noErr {
-            throw KeychainError.failedToDeleteItem(status: status)
+            let error = KeychainError(status: status) ?? .unexpectedFailure
+            throw error
         }
     }
 }
@@ -64,7 +67,7 @@ extension Keychain {
             attributes[kSecAttrAccessControl as String] = accessControl
         }
         
-        try delete(matching: attributes)
+        _ = try? delete(matching: attributes)
         try add(attributes: attributes)
     }
     
@@ -134,7 +137,7 @@ extension Keychain {
             throw KeychainError.failedToEncodeStringAsData
         }
         
-        return try self.set(data, account: account, service: service)
+        try self.set(data, account: account, service: service)
     }
     
     /**
