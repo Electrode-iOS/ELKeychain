@@ -52,11 +52,17 @@ public final class Keychain {
         var result: AnyObject?
         let status = withUnsafeMutablePointer(&result) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
         
-        if status != noErr {
+        switch status {
+            
+        case errSecItemNotFound:
+            return nil
+        
+        case errSecSuccess:
+            return result
+        
+        default:
             throw KeychainError.failedToCopyItem(status: status)
         }
-        
-        return result
     }
 }
 
