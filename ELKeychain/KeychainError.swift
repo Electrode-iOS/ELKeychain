@@ -8,13 +8,35 @@
 
 import Foundation
 
-enum KeychainError: ErrorType {
+public enum KeychainError: ErrorType {
     case unexpectedFailure
-    case failedToCreateTouchIDAccessControl
-    case itemNotFound
-    case failedToDeleteItem(status: OSStatus)
-    case failedToAddItem(status: OSStatus)
-    case failedToCopyItem(status: OSStatus)
     case failedToEncodeStringAsData
     case failedToCreateAccessControl
+    case userCanceled
+    case badRequest
+    case keychainNotAvailable
+    case duplicateItem
+    case itemNotFound
+    case interactionNotAllowed
+    case decodeFailure
+    case authenticationFailure
+    case badParameters
+}
+
+extension KeychainError {
+    init?(status: OSStatus) {
+        switch status {
+        case errSecSuccess: return nil
+        case errSecParam: self = .badParameters
+        case errSecUserCanceled: self = .userCanceled
+        case errSecBadReq: self = .badRequest
+        case errSecNotAvailable: self = .keychainNotAvailable
+        case errSecDuplicateItem: self = .duplicateItem
+        case errSecItemNotFound: self = .itemNotFound
+        case errSecInteractionNotAllowed: self = .interactionNotAllowed
+        case errSecDecode: self = .decodeFailure
+        case errSecAuthFailed: self = .authenticationFailure
+        default: self = unexpectedFailure
+        }
+    }
 }
