@@ -10,15 +10,7 @@ import Foundation
 
 /// Provides access to the system keychain for storing, retrieving, and removing generic password items.
 public final class Keychain {
-    private static func delete(matching query: CFDictionary) throws {
-        let status = SecItemDelete(query) // delete first because adding a duplicate item results in an error
-        
-        if status != noErr {
-            throw KeychainError.failedToDeleteItem(status: status)
-        }
-    }
-    
-    private static func add(attributes attributes: CFDictionary) throws {
+    public static func add(attributes attributes: CFDictionary) throws {
         let status = SecItemAdd(attributes, nil)
         
         if status != noErr {
@@ -26,7 +18,7 @@ public final class Keychain {
         }
     }
     
-    private static func copy(matching query: CFDictionary) throws -> AnyObject? {
+    public static func copy(matching query: CFDictionary) throws -> AnyObject? {
         var result: AnyObject?
         let status = withUnsafeMutablePointer(&result) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
         
@@ -40,6 +32,14 @@ public final class Keychain {
         
         default:
             throw KeychainError.failedToCopyItem(status: status)
+        }
+    }
+    
+    public static func delete(matching query: CFDictionary) throws {
+        let status = SecItemDelete(query) // delete first because adding a duplicate item results in an error
+        
+        if status != noErr {
+            throw KeychainError.failedToDeleteItem(status: status)
         }
     }
 }
