@@ -9,68 +9,105 @@
 import XCTest
 import ELKeychain
 
+
+private let testServiceName = "ELKeychainTests-test-service"
+
 class KeychainTests: XCTestCase {
-    func test_setString_returnsTrueWhenStoringKeychainItem() {
-        let value = "test_set_returnsTrueWhenStoringKeychainItem-value"
+    func removeTestKeychainItems() {
+        let query = [
+            kSecClass as String : kSecClassGenericPassword,
+            kSecAttrService as String : testServiceName]
         
-        let status = Keychain.set(value, account: "set-test-account", service: "set-test-service")
+        let _ = try? Keychain.delete(matching: query)   
+    }
+    
+    override func setUp() {
+        removeTestKeychainItems()
+    }
+    
+    func test_setString_doesNotThrowErrors() {
+        let value = "value"
+        let account = "test_setString_doesNotThrowErrors"
         
-        XCTAssertTrue(status)
+        do {
+            try Keychain.set(value, account: account, service: testServiceName)
+        } catch let error {
+            XCTFail("Unexpected error. \(error)")
+        }
         
         // cleanup
-        Keychain.delete(account: "set-test-account", service: "set-test-service")
+        try! Keychain.delete(account: account, service: testServiceName)
     }
     
     func test_getString_returnsKeychainItemForValidQuery() {
-        let value = "test_get_returnsKeychainItemForValidQuery-value"
-        Keychain.set(value, account: "get-test-account", service: "get-test-service")
+        let value = "value"
+        let account = "test_getString_returnsKeychainItemForValidQuery"
+        var result: String?
         
-        let result: String? = Keychain.get(account: "get-test-account", service: "get-test-service")
+        try! Keychain.set(value, account: account, service: testServiceName)
+
+        do {
+            result = try Keychain.get(account: account, service: testServiceName)
+        } catch let error {
+            XCTFail("Unexpected error. \(error)")
+        }
         
         XCTAssertNotNil(result)
         XCTAssertEqual(result!, value)
         
-        Keychain.delete(account: "get-test-account", service: "get-test-account")
+        try! Keychain.delete(account: account, service: testServiceName)
     }
     
-    func test_getData_returnsNilWhenKeychainItemIsMissing() {
-        let account = "test_getData_returnsNilWhenKeychainItemIsMissing-account"
-        let service = "test_getData_returnsNilWhenKeychainItemIsMissing-service"
+    func test_getData_returnsNilWhenKeychainItemIsNotFound() {
+        let account = "test_getData_returnsNilWhenKeychainItemIsNotFound-account"
         
-        let data: NSData? = Keychain.get(account: account, service: service)
-        
-        XCTAssertNil(data)
+        do {
+            let result: NSData? = try Keychain.get(account: account, service: testServiceName)
+            XCTAssertNil(result)
+        } catch {
+            XCTFail("Unexpected error. \(error)")
+        }
     }
     
     func test_getData_returnsNilAfterItemIsDeleted() {
         let value = "test_getData_returnsNilAfterItemIsDeleted-value"
         let account = "test_getData_returnsNilAfterItemIsDeleted-account"
-        let service = "test_getData_returnsNilAfterItemIsDeleted-service"
-        Keychain.set(value, account: account, service: service)
-        Keychain.delete(account: account, service: service)
-        
-        let data: NSData? = Keychain.get(account: account, service: service)
-        
-        XCTAssertNil(data)
+       
+        do {
+            try Keychain.set(value, account: account, service: testServiceName)
+            try Keychain.delete(account: account, service: testServiceName)
+            
+            let data: NSData? = try Keychain.get(account: account, service: testServiceName)
+
+            XCTAssertNil(data)
+        } catch let error {
+            XCTFail("Unexpected error. \(error)")
+
+        }
     }
     
-    func test_delete_returnsTrueWhenDeletingKeychainItem() {
-        let value = "test_delete_returnsTrueWhenDeletingKeychainItem-value"
-        let account = "test_delete_returnsTrueWhenDeletingKeychainItem-account"
-        let service = "test_delete_returnsTrueWhenDeletingKeychainItem-service"
-        Keychain.set(value, account: account, service: service)
+    func test_delete_doesNotThrowErrorWhenDeletingKeychainItem() {
+        let value = "test_delete_doesNotThrowErrorWhenDeletingKeychainItem-value"
+        let account = "test_delete_doesNotThrowErrorWhenDeletingKeychainItem-account"
         
-        let status = Keychain.delete(account: account, service: service)
+        do {
+            try Keychain.set(value, account: account, service: testServiceName)
+            try Keychain.delete(account: account, service: testServiceName)
+            
+        } catch let error {
+            XCTFail("delete call should not fail. Unexpected error. \(error)")
+        }
         
-        XCTAssertTrue(status)
     }
     
-    func test_delete_returnsFalseWhenUnableToDeleteItem() {
-        let account = "test_delete_returnsFalseWhenUnableToDeleteItem-account"
-        let service = "test_delete_returnsFalseWhenUnableToDeleteItem-service"
+    func test_delete_throwsErrorWhenUnableToDeleteItem() {
+        let account = "test_delete_throwsErrorWhenUnableToDeleteItem-account"
         
-        let status = Keychain.delete(account: account, service: service)
-        
-        XCTAssertFalse(status)
+        do {
+            try Keychain.delete(account: account, service: testServiceName)
+            XCTFail("Expected delete call to throw error")
+        } catch _ {
+            
+        }
     }
 }
