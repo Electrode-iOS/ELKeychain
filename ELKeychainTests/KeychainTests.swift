@@ -9,7 +9,6 @@
 import XCTest
 import ELKeychain
 
-
 private let testServiceName = "ELKeychainTests-test-service"
 
 class KeychainTests: XCTestCase {
