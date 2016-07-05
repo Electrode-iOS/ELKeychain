@@ -42,4 +42,11 @@ public struct GenericPasswordItem: GenericPasswordItemProtocol {
         self.account = account
         self.service = service
     }
+    
+    public init?(data: String, account: String, service: String) {
+        guard let data = data.dataUsingEncoding(NSUTF8StringEncoding)
+        else { return nil }
+        
+        self.init(data: data, account: account, service: service)
+    }
 }
