@@ -18,12 +18,13 @@ public protocol GenericPasswordItemProtocol {
 }
 
 extension GenericPasswordItemProtocol {
-    mutating func configureAccessControl(protection protection: AccessControlProtection, flags: SecAccessControlCreateFlags) throws {
+    public mutating func configureAccessControl(protection protection: AccessControlProtection, flags: SecAccessControlCreateFlags) throws {
         var accessControlError: Unmanaged<CFError>?
         
         guard let control = SecAccessControlCreateWithFlags(kCFAllocatorDefault,
                                                             protection.rawValue,
-                                                            flags, &accessControlError)
+                                                            flags,
+                                                            &accessControlError)
         else { throw KeychainError.failedToCreateAccessControl }
         
         self.accessControl = control
