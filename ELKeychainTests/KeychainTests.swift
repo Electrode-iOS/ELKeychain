@@ -12,16 +12,16 @@ import ELKeychain
 private let testServiceName = "ELKeychainTests-test-service"
 
 class KeychainTests: XCTestCase {
-    func removeTestKeychainItems() {
-        let query = [
-            kSecClass as String : kSecClassGenericPassword,
-            kSecAttrService as String : testServiceName]
-        
-        let _ = try? Keychain.delete(matching: query)   
+    override func setUp() {
+        deleteAllItems(service: testServiceName)
     }
     
-    override func setUp() {
-        removeTestKeychainItems()
+    func deleteAllItems(service service: String) {
+        let query = [
+            kSecClass as String : kSecClassGenericPassword,
+            kSecAttrService as String : service]
+        
+        let _ = try? Keychain.delete(matching: query)
     }
     
     func test_setString_doesNotThrowErrors() {
@@ -88,7 +88,9 @@ class KeychainTests: XCTestCase {
     func test_delete_doesNotThrowErrorWhenDeletingKeychainItem() {
         let value = "test_delete_doesNotThrowErrorWhenDeletingKeychainItem-value"
         let account = "test_delete_doesNotThrowErrorWhenDeletingKeychainItem-account"
-        let keychain = Keychain(service: testServiceName)
+        let service = "test_delete_doesNotThrowErrorWhenDeletingKeychainItem-service"
+        let keychain = Keychain(service: service)
+        deleteAllItems(service: testServiceName)
         
         do {
             try keychain.set(value, account: account)
@@ -98,11 +100,11 @@ class KeychainTests: XCTestCase {
         
         do {
             try keychain.delete(account: account)
-            
         } catch let error {
             XCTFail("delete call should not fail. Unexpected error. \(error)")
         }
         
+        deleteAllItems(service: testServiceName)
     }
     
     func test_delete_throwsErrorWhenUnableToDeleteItem() {
