@@ -90,7 +90,7 @@ class KeychainTests: XCTestCase {
         let account = "test_delete_doesNotThrowErrorWhenDeletingKeychainItem-account"
         let service = "test_delete_doesNotThrowErrorWhenDeletingKeychainItem-service"
         let keychain = Keychain(service: service)
-        deleteAllItems(service: testServiceName)
+        deleteAllItems(service: service)
         
         do {
             try keychain.set(value, account: account)
@@ -104,7 +104,7 @@ class KeychainTests: XCTestCase {
             XCTFail("delete call should not fail. Unexpected error. \(error)")
         }
         
-        deleteAllItems(service: testServiceName)
+        deleteAllItems(service: service)
     }
     
     func test_delete_throwsErrorWhenUnableToDeleteItem() {
