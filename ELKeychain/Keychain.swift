@@ -10,6 +10,36 @@ import Foundation
 
 /// Provides access to the system keychain for storing, retrieving, and removing generic password items.
 public final class Keychain {
+    let service: String
+    
+    public init(service: String) {
+        self.service = service
+    }
+    
+    public func set(data: NSData, account: String, accessControl: AccessControlConvertible? = nil) throws {
+        try Keychain.set(data, account: account, service: service)
+    }
+    
+    public func set(value: String, account: String, accessControl: AccessControlConvertible? = nil) throws {
+        try Keychain.set(value, account: account, service: service)
+    }
+    
+    public func get(account account: String) throws -> NSData? {
+        return try Keychain.get(account: account, service: service)
+    }
+    
+    public func get(account account: String) throws -> String? {
+        return try Keychain.get(account: account, service: service)
+    }
+    
+    public func delete(account account: String) throws {
+        try Keychain.delete(account: account, service: service)
+    }
+}
+
+// MARK: - Core API
+
+extension Keychain {
     public static func add(attributes attributes: CFDictionary) throws {
         let status = SecItemAdd(attributes, nil)
         
@@ -27,10 +57,10 @@ public final class Keychain {
             
         case errSecItemNotFound:
             return nil
-        
+            
         case errSecSuccess:
             return result
-        
+            
         default:
             let error = KeychainError(status: status) ?? .unexpectedFailure
             throw error
@@ -47,6 +77,8 @@ public final class Keychain {
     }
 }
 
+// MARK: - Convenience API
+
 extension Keychain {
     /**
      Store a generic password item for a given account and service.
@@ -56,14 +88,14 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - parameter accessControl: The access control settings of the password item.
      */
-    public static func set(data: NSData, account: String, service: String, accessControl: SecAccessControl? = nil) throws {
+    public static func set(data: NSData, account: String, service: String, accessControl: AccessControlConvertible? = nil) throws {
         var attributes: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: account,
             kSecAttrService as String: service,
             kSecValueData as String: data]
                 
-        if let accessControl = accessControl {
+        if let accessControl = accessControl?.accessControl {
             attributes[kSecAttrAccessControl as String] = accessControl
         }
         
@@ -104,21 +136,6 @@ extension Keychain {
             kSecAttrService as String : service]
         
         try delete(matching: query)
-    }
-}
-
-// MARK: - GenericPasswordItem API
-
-extension Keychain {
-    public static func set<T: GenericPasswordItemProtocol>(item: T) throws {
-        try set(item.data, account: item.account, service: item.service, accessControl: item.accessControl)
-    }
-    
-    public static func get<T: GenericPasswordItemProtocol>(account account: String, service: String) throws -> T? {
-        guard let data: NSData = try get(account: account, service: service)
-        else { return nil }
-        
-        return T(data: data, account: account, service: service)
     }
 }
 

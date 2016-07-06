@@ -1,5 +1,5 @@
 //
-//  AccessControlProtection.swift
+//  AccessControlProtectionPolicy.swift
 //  ELKeychain
 //
 //  Created by Angelo Di Paolo on 6/29/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum AccessControlProtection {
+public enum AccessControlProtectionPolicy {
     case whenUnlocked
     case afterFirstUnlock
     case always
@@ -16,9 +16,21 @@ public enum AccessControlProtection {
     case whenUnlockedThisDeviceOnly
     case afterFirstUnlockThisDeviceOnly
     case alwaysThisDeviceOnly
+    
+    public func createAccessControl(flags flags: SecAccessControlCreateFlags) throws -> SecAccessControl {
+        var accessControlError: Unmanaged<CFError>?
+        
+        guard let control = SecAccessControlCreateWithFlags(kCFAllocatorDefault,
+                                                            rawValue,
+                                                            flags,
+                                                            &accessControlError)
+        else { throw KeychainError.failedToCreateAccessControl }
+        
+        return control
+    }
 }
 
-extension AccessControlProtection: RawRepresentable {
+extension AccessControlProtectionPolicy: RawRepresentable {
     public init?(rawValue: String) {
         switch rawValue {
         case String(kSecAttrAccessibleWhenUnlocked):                    self = whenUnlocked
