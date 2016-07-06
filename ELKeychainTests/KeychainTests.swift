@@ -88,7 +88,6 @@ class KeychainTests: XCTestCase {
     func test_delete_doesNotThrowErrorWhenDeletingKeychainItem() {
         let value = "test_delete_doesNotThrowErrorWhenDeletingKeychainItem-value"
         let account = "test_delete_doesNotThrowErrorWhenDeletingKeychainItem-account"
-        
         let keychain = Keychain(service: testServiceName)
         
         do {

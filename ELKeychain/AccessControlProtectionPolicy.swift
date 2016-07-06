@@ -16,18 +16,6 @@ public enum AccessControlProtectionPolicy {
     case whenUnlockedThisDeviceOnly
     case afterFirstUnlockThisDeviceOnly
     case alwaysThisDeviceOnly
-    
-    public func createAccessControl(flags flags: SecAccessControlCreateFlags) throws -> SecAccessControl {
-        var accessControlError: Unmanaged<CFError>?
-        
-        guard let control = SecAccessControlCreateWithFlags(kCFAllocatorDefault,
-                                                            rawValue,
-                                                            flags,
-                                                            &accessControlError)
-        else { throw KeychainError.failedToCreateAccessControl }
-        
-        return control
-    }
 }
 
 extension AccessControlProtectionPolicy: RawRepresentable {
