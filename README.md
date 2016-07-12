@@ -4,7 +4,6 @@ A Swift framework for storing, retrieving, and removing generic password items i
 
 ## Installation
 
-
 ### Carthage
 
 Install with [Carthage](https://github.com/Carthage/Carthage) by adding the framework to your project's [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile).
@@ -17,45 +16,57 @@ github "Electrode-iOS/ELKeychain" ~> 0.0.1
 
 Install manually by adding `ELKeychain.xcodeproj` to your project and configuring your target to link `ELKeychain.framework`.
 
-
 ## Usage
 
-### Storing a Password
+### Storing a Generic Password Item
 
 ```
 let password = "12345"
-let success = Keychain.set(password, account: "king-roland", service: "druidia-airshield")
 
-
-if success {
-  // generic password item stored successfully
-} else {
-  // failed to store keychain item
+do {
+  try Keychain.set(password, account: "king-roland", service: "druidia-airshield")
+} catch let error {
+    // failed to store keychain item
 }
 
 ```
 
-### Retrieving a Password
+### Retrieving a Generic Password Item
 
 ```
-if let password: String = Keychain.get(account: "king-roland", service: "druidia-airshield") {
-  Airshield.unlock(password: password)
-}
-```
+do {
+    if let password: String = try Keychain.get(account: "king-roland", service: "druidia-airshield") {
+        Airshield.unlock(password: password)
+    } else {
+      // unable to find password to unlock
+    }
 
-### Removing a Password
-
-```
-let success = Keychain.delete(account: "king-roland", service: "druidia-airshield")
-
-if success {
-  // generic password item deleted successfully
-} else {
-  // failed to delete generic password item
+} catch let error {
+    // an error occurred while retrieving the keychain item
 }
 
+
 ```
 
+### Removing a Generic Password Item
 
+```
+do {
+    try Keychain.delete(account: "king-roland", service: "druidia-airshield")
+} catch let error {
+    // an error occurred while trying to delete the keychain item
+}
 
+```
 
+### Storing a Generic Password Item w/ Access Control
+
+```
+do {
+    let accessControl = try AccessControl(protection: .whenPasscodeSetThisDeviceOnly, policy: .UserPresence)
+    try Credential.keychain.set("12345", account: "king-roland", accessControl: accessControl)
+} catch let error {
+    // an error occurred
+}
+
+```

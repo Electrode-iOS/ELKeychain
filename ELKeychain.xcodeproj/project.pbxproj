@@ -11,6 +11,10 @@
 		17137CEB1CFDF33100AB46DD /* ELKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17137CE01CFDF33100AB46DD /* ELKeychain.framework */; };
 		17137CFB1CFDF34100AB46DD /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17137CFA1CFDF34100AB46DD /* KeychainTests.swift */; };
 		17137CFD1CFDF37400AB46DD /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17137CFC1CFDF37400AB46DD /* Keychain.swift */; };
+		171DC9171D242AFE0074741D /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171DC9161D242AFE0074741D /* KeychainError.swift */; };
+		171DC9191D24399A0074741D /* AccessControlProtectionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171DC9181D24399A0074741D /* AccessControlProtectionPolicy.swift */; };
+		1723BAFF1D2D805600394EF8 /* AccessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723BAFE1D2D805600394EF8 /* AccessControl.swift */; };
+		1723BB011D2D806200394EF8 /* AccessControlConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723BB001D2D806200394EF8 /* AccessControlConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,10 @@
 		17137CF11CFDF33100AB46DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17137CFA1CFDF34100AB46DD /* KeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		17137CFC1CFDF37400AB46DD /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		171DC9161D242AFE0074741D /* KeychainError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
+		171DC9181D24399A0074741D /* AccessControlProtectionPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessControlProtectionPolicy.swift; sourceTree = "<group>"; };
+		1723BAFE1D2D805600394EF8 /* AccessControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessControl.swift; sourceTree = "<group>"; };
+		1723BB001D2D806200394EF8 /* AccessControlConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessControlConvertible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +83,11 @@
 			children = (
 				17137CE31CFDF33100AB46DD /* ELKeychain.h */,
 				17137CE51CFDF33100AB46DD /* Info.plist */,
+				1723BAFE1D2D805600394EF8 /* AccessControl.swift */,
+				1723BB001D2D806200394EF8 /* AccessControlConvertible.swift */,
+				171DC9181D24399A0074741D /* AccessControlProtectionPolicy.swift */,
 				17137CFC1CFDF37400AB46DD /* Keychain.swift */,
+				171DC9161D242AFE0074741D /* KeychainError.swift */,
 			);
 			path = ELKeychain;
 			sourceTree = "<group>";
@@ -198,6 +210,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				17137CFD1CFDF37400AB46DD /* Keychain.swift in Sources */,
+				1723BAFF1D2D805600394EF8 /* AccessControl.swift in Sources */,
+				1723BB011D2D806200394EF8 /* AccessControlConvertible.swift in Sources */,
+				171DC9171D242AFE0074741D /* KeychainError.swift in Sources */,
+				171DC9191D24399A0074741D /* AccessControlProtectionPolicy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +401,7 @@
 				17137CF61CFDF33100AB46DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17137CF71CFDF33100AB46DD /* Build configuration list for PBXNativeTarget "ELKeychainTests" */ = {
 			isa = XCConfigurationList;
@@ -393,6 +410,7 @@
 				17137CF91CFDF33100AB46DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
