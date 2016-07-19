@@ -21,7 +21,7 @@ public final class Keychain {
     }
     
     public func set(value: String, account: String, accessControl: AccessControlConvertible? = nil) throws {
-        try Keychain.set(value, account: account, service: service)
+        try Keychain.set(value, account: account, service: service, accessControl: accessControl)
     }
     
     public func get(account account: String) throws -> NSData? {
@@ -149,12 +149,12 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - returns: Returns true if the password was stored successfully.
     */
-    public static func set(value: String, account: String, service: String) throws {
+    public static func set(value: String, account: String, service: String, accessControl: AccessControlConvertible? = nil) throws {
         guard let data = value.dataUsingEncoding(NSUTF8StringEncoding) else {
             throw KeychainError.failedToEncodeStringAsData
         }
         
-        try self.set(data, account: account, service: service)
+        try self.set(data, account: account, service: service, accessControl: accessControl)
     }
     
     /**
