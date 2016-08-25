@@ -16,23 +16,23 @@ public final class Keychain {
         self.service = service
     }
     
-    public func set(data: NSData, account: String, accessControl: AccessControlConvertible? = nil) throws {
+    public func set(_ data: Data, account: String, accessControl: AccessControlConvertible? = nil) throws {
         try Keychain.set(data, account: account, service: service)
     }
     
-    public func set(value: String, account: String, accessControl: AccessControlConvertible? = nil) throws {
+    public func set(_ value: String, account: String, accessControl: AccessControlConvertible? = nil) throws {
         try Keychain.set(value, account: account, service: service, accessControl: accessControl)
     }
     
-    public func get(account account: String) throws -> NSData? {
+    public func get(account: String) throws -> Data? {
         return try Keychain.get(account: account, service: service)
     }
     
-    public func get(account account: String) throws -> String? {
+    public func get(account: String) throws -> String? {
         return try Keychain.get(account: account, service: service)
     }
     
-    public func delete(account account: String) throws {
+    public func delete(account: String) throws {
         try Keychain.delete(account: account, service: service)
     }
 }
@@ -40,7 +40,7 @@ public final class Keychain {
 // MARK: - Core API
 
 extension Keychain {
-    public static func add(attributes attributes: CFDictionary) throws {
+    public static func add(attributes: CFDictionary) throws {
         let status = SecItemAdd(attributes, nil)
         
         if status != noErr {
@@ -51,7 +51,7 @@ extension Keychain {
     
     public static func copy(matching query: CFDictionary) throws -> AnyObject? {
         var result: AnyObject?
-        let status = withUnsafeMutablePointer(&result) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
+        let status = withUnsafeMutablePointer(to: &result) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
         
         switch status {
             
@@ -88,19 +88,19 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - parameter accessControl: The access control settings of the password item.
      */
-    public static func set(data: NSData, account: String, service: String, accessControl: AccessControlConvertible? = nil) throws {
+    public static func set(_ data: Data, account: String, service: String, accessControl: AccessControlConvertible? = nil) throws {
         var attributes: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: account,
-            kSecAttrService as String: service,
-            kSecValueData as String: data]
+            kSecAttrAccount as String: account as AnyObject,
+            kSecAttrService as String: service as AnyObject,
+            kSecValueData as String: data as AnyObject]
                 
         if let accessControl = accessControl?.accessControl {
             attributes[kSecAttrAccessControl as String] = accessControl
         }
         
-        _ = try? delete(matching: attributes)
-        try add(attributes: attributes)
+        _ = try? delete(matching: attributes as CFDictionary)
+        try add(attributes: attributes as CFDictionary)
     }
     
     /**
@@ -110,16 +110,16 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - returns: The generic password value if found. Returns nil when the password cannot be found.
      */
-    public static func get(account account: String, service: String) throws -> NSData? {
+    public static func get(account: String, service: String) throws -> Data? {
         let query = [kSecClass as String : kSecClassGenericPassword,
                      kSecAttrAccount as String : account,
                      kSecAttrService as String: service,
                      kSecReturnData as String : kCFBooleanTrue,
-                     kSecMatchLimit as String : kSecMatchLimitOne]
+                     kSecMatchLimit as String : kSecMatchLimitOne] as [String : Any]
         
-        let item = try copy(matching: query)
+        let item = try copy(matching: query as CFDictionary)
         
-        return item as? NSData
+        return item as? Data
     }
     
     /**
@@ -129,13 +129,13 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - returns: Returns true if the password was deleted successfully.
      */
-    public static func delete(account account: String, service: String) throws {
+    public static func delete(account: String, service: String) throws {
         let query = [
             kSecClass as String : kSecClassGenericPassword,
             kSecAttrAccount as String : account,
-            kSecAttrService as String : service]
+            kSecAttrService as String : service] as [String : Any]
         
-        try delete(matching: query)
+        try delete(matching: query as CFDictionary)
     }
 }
 
@@ -149,8 +149,8 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - returns: Returns true if the password was stored successfully.
     */
-    public static func set(value: String, account: String, service: String, accessControl: AccessControlConvertible? = nil) throws {
-        guard let data = value.dataUsingEncoding(NSUTF8StringEncoding) else {
+    public static func set(_ value: String, account: String, service: String, accessControl: AccessControlConvertible? = nil) throws {
+        guard let data = value.data(using: String.Encoding.utf8) else {
             throw KeychainError.failedToEncodeStringAsData
         }
         
@@ -164,11 +164,11 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - returns: The generic password string if found. Returns nil when the password cannot be found.
     */
-    public static func get(account account: String, service: String) throws -> String? {
-        guard let data: NSData = try self.get(account: account, service: service) else {
+    public static func get(account: String, service: String) throws -> String? {
+        guard let data: Data = try self.get(account: account, service: service) else {
             return nil
         }
         
-        return NSString(data: data, encoding: NSUTF8StringEncoding) as? String
+        return NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
     }
 }
