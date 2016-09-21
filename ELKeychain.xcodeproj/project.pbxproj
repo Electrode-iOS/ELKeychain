@@ -492,7 +492,7 @@
 		17137CF81CFDF33100AB46DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Angelo DiPaolo (5224P3TA28)";
+				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = ELKeychainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychainTests;
@@ -505,7 +505,7 @@
 		17137CF91CFDF33100AB46DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Angelo DiPaolo (5224P3TA28)";
+				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = ELKeychainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychainTests;
@@ -642,7 +642,7 @@
 		EAA730361D64FD0D006CAFB0 /* QADeployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Angelo DiPaolo (5224P3TA28)";
+				CODE_SIGN_IDENTITY = "";
 				INFOPLIST_FILE = ELKeychainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychainTests;
