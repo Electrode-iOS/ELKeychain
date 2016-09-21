@@ -15,6 +15,11 @@
 		171DC9191D24399A0074741D /* AccessControlProtectionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171DC9181D24399A0074741D /* AccessControlProtectionPolicy.swift */; };
 		1723BAFF1D2D805600394EF8 /* AccessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723BAFE1D2D805600394EF8 /* AccessControl.swift */; };
 		1723BB011D2D806200394EF8 /* AccessControlConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723BB001D2D806200394EF8 /* AccessControlConvertible.swift */; };
+		17B5BC9B1D92E0980034823A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B5BC9A1D92E0980034823A /* AppDelegate.swift */; };
+		17B5BC9D1D92E0980034823A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B5BC9C1D92E0980034823A /* ViewController.swift */; };
+		17B5BCA01D92E0980034823A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B5BC9E1D92E0980034823A /* Main.storyboard */; };
+		17B5BCA21D92E0980034823A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B5BCA11D92E0980034823A /* Assets.xcassets */; };
+		17B5BCA51D92E0980034823A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B5BCA31D92E0980034823A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +29,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 17137CDF1CFDF33100AB46DD;
 			remoteInfo = ELKeychain;
+		};
+		17B5BCAB1D92E0A90034823A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17137CD71CFDF33100AB46DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17B5BC971D92E0980034823A;
+			remoteInfo = ELKeychainTestHost;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -39,6 +51,14 @@
 		171DC9181D24399A0074741D /* AccessControlProtectionPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessControlProtectionPolicy.swift; sourceTree = "<group>"; };
 		1723BAFE1D2D805600394EF8 /* AccessControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessControl.swift; sourceTree = "<group>"; };
 		1723BB001D2D806200394EF8 /* AccessControlConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessControlConvertible.swift; sourceTree = "<group>"; };
+		17B5BC981D92E0980034823A /* ELKeychainTestHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELKeychainTestHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B5BC9A1D92E0980034823A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		17B5BC9C1D92E0980034823A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		17B5BC9F1D92E0980034823A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		17B5BCA11D92E0980034823A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17B5BCA41D92E0980034823A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		17B5BCA61D92E0980034823A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17B5BCAD1D92E0BD0034823A /* ELKeychainTestHost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ELKeychainTestHost.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +77,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17B5BC951D92E0980034823A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +92,7 @@
 			children = (
 				17137CE21CFDF33100AB46DD /* ELKeychain */,
 				17137CEE1CFDF33100AB46DD /* ELKeychainTests */,
+				17B5BC991D92E0980034823A /* ELKeychainTestHost */,
 				17137CE11CFDF33100AB46DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +102,7 @@
 			children = (
 				17137CE01CFDF33100AB46DD /* ELKeychain.framework */,
 				17137CEA1CFDF33100AB46DD /* ELKeychainTests.xctest */,
+				17B5BC981D92E0980034823A /* ELKeychainTestHost.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +128,20 @@
 				17137CF11CFDF33100AB46DD /* Info.plist */,
 			);
 			path = ELKeychainTests;
+			sourceTree = "<group>";
+		};
+		17B5BC991D92E0980034823A /* ELKeychainTestHost */ = {
+			isa = PBXGroup;
+			children = (
+				17B5BCAD1D92E0BD0034823A /* ELKeychainTestHost.entitlements */,
+				17B5BC9A1D92E0980034823A /* AppDelegate.swift */,
+				17B5BC9C1D92E0980034823A /* ViewController.swift */,
+				17B5BC9E1D92E0980034823A /* Main.storyboard */,
+				17B5BCA11D92E0980034823A /* Assets.xcassets */,
+				17B5BCA31D92E0980034823A /* LaunchScreen.storyboard */,
+				17B5BCA61D92E0980034823A /* Info.plist */,
+			);
+			path = ELKeychainTestHost;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,11 +188,29 @@
 			);
 			dependencies = (
 				17137CED1CFDF33100AB46DD /* PBXTargetDependency */,
+				17B5BCAC1D92E0A90034823A /* PBXTargetDependency */,
 			);
 			name = ELKeychainTests;
 			productName = ELKeychainTests;
 			productReference = 17137CEA1CFDF33100AB46DD /* ELKeychainTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		17B5BC971D92E0980034823A /* ELKeychainTestHost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17B5BCA71D92E0980034823A /* Build configuration list for PBXNativeTarget "ELKeychainTestHost" */;
+			buildPhases = (
+				17B5BC941D92E0980034823A /* Sources */,
+				17B5BC951D92E0980034823A /* Frameworks */,
+				17B5BC961D92E0980034823A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ELKeychainTestHost;
+			productName = ELKeychainTestHost;
+			productReference = 17B5BC981D92E0980034823A /* ELKeychainTestHost.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -157,7 +218,7 @@
 		17137CD71CFDF33100AB46DD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Walmart;
 				TargetAttributes = {
@@ -168,6 +229,16 @@
 					17137CE91CFDF33100AB46DD = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						TestTargetID = 17B5BC971D92E0980034823A;
+					};
+					17B5BC971D92E0980034823A = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -177,6 +248,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 17137CD61CFDF33100AB46DD;
 			productRefGroup = 17137CE11CFDF33100AB46DD /* Products */;
@@ -185,6 +257,7 @@
 			targets = (
 				17137CDF1CFDF33100AB46DD /* ELKeychain */,
 				17137CE91CFDF33100AB46DD /* ELKeychainTests */,
+				17B5BC971D92E0980034823A /* ELKeychainTestHost */,
 			);
 		};
 /* End PBXProject section */
@@ -201,6 +274,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17B5BC961D92E0980034823A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17B5BCA51D92E0980034823A /* LaunchScreen.storyboard in Resources */,
+				17B5BCA21D92E0980034823A /* Assets.xcassets in Resources */,
+				17B5BCA01D92E0980034823A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +310,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17B5BC941D92E0980034823A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17B5BC9D1D92E0980034823A /* ViewController.swift in Sources */,
+				17B5BC9B1D92E0980034823A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -235,7 +327,31 @@
 			target = 17137CDF1CFDF33100AB46DD /* ELKeychain */;
 			targetProxy = 17137CEC1CFDF33100AB46DD /* PBXContainerItemProxy */;
 		};
+		17B5BCAC1D92E0A90034823A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17B5BC971D92E0980034823A /* ELKeychainTestHost */;
+			targetProxy = 17B5BCAB1D92E0A90034823A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		17B5BC9E1D92E0980034823A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17B5BC9F1D92E0980034823A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		17B5BCA31D92E0980034823A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17B5BCA41D92E0980034823A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		17137CF21CFDF33100AB46DD /* Debug */ = {
@@ -376,20 +492,76 @@
 		17137CF81CFDF33100AB46DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Angelo DiPaolo (5224P3TA28)";
 				INFOPLIST_FILE = ELKeychainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ELKeychainTestHost.app/ELKeychainTestHost";
 			};
 			name = Debug;
 		};
 		17137CF91CFDF33100AB46DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Angelo DiPaolo (5224P3TA28)";
 				INFOPLIST_FILE = ELKeychainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ELKeychainTestHost.app/ELKeychainTestHost";
+			};
+			name = Release;
+		};
+		17B5BCA81D92E0980034823A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = ELKeychainTestHost/ELKeychainTestHost.entitlements;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = ELKeychainTestHost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.walmart.ELKeychainTestHost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 2.3;
+			};
+			name = Debug;
+		};
+		17B5BCA91D92E0980034823A /* QADeployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = ELKeychainTestHost/ELKeychainTestHost.entitlements;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = ELKeychainTestHost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.walmart.ELKeychainTestHost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+			};
+			name = QADeployment;
+		};
+		17B5BCAA1D92E0980034823A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = ELKeychainTestHost/ELKeychainTestHost.entitlements;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = ELKeychainTestHost/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.walmart.ELKeychainTestHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
 			};
@@ -470,11 +642,13 @@
 		EAA730361D64FD0D006CAFB0 /* QADeployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Angelo DiPaolo (5224P3TA28)";
 				INFOPLIST_FILE = ELKeychainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ELKeychainTestHost.app/ELKeychainTestHost";
 			};
 			name = QADeployment;
 		};
@@ -510,6 +684,15 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		17B5BCA71D92E0980034823A /* Build configuration list for PBXNativeTarget "ELKeychainTestHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17B5BCA81D92E0980034823A /* Debug */,
+				17B5BCA91D92E0980034823A /* QADeployment */,
+				17B5BCAA1D92E0980034823A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
