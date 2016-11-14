@@ -15,7 +15,7 @@ public struct AccessControl: AccessControlConvertible {
         var accessControlError: Unmanaged<CFError>?
         
         guard let control = SecAccessControlCreateWithFlags(kCFAllocatorDefault,
-                                                            protection.rawValue,
+                                                            protection.rawValue as CFTypeRef,
                                                             policy,
                                                             &accessControlError)
         else { throw KeychainError.failedToCreateAccessControl }

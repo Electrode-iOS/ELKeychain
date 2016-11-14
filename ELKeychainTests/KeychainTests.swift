@@ -16,12 +16,12 @@ class KeychainTests: XCTestCase {
         deleteAllItems(service: testServiceName)
     }
     
-    func deleteAllItems(service service: String) {
+    func deleteAllItems(service: String) {
         let query = [
             kSecClass as String : kSecClassGenericPassword,
-            kSecAttrService as String : service]
+            kSecAttrService as String : service] as [String : Any]
         
-        let _ = try? Keychain.delete(matching: query)
+        let _ = try? Keychain.delete(matching: query as CFDictionary)
     }
     
     func test_setString_doesNotThrowErrors() {
@@ -61,7 +61,7 @@ class KeychainTests: XCTestCase {
         let account = "test_getData_returnsNilWhenKeychainItemIsNotFound-account"
         
         do {
-            let result: NSData? = try Keychain.get(account: account, service: testServiceName)
+            let result: Data? = try Keychain.get(account: account, service: testServiceName)
             XCTAssertNil(result)
         } catch {
             XCTFail("Unexpected error. \(error)")
@@ -76,7 +76,7 @@ class KeychainTests: XCTestCase {
             try Keychain.set(value, account: account, service: testServiceName)
             try Keychain.delete(account: account, service: testServiceName)
             
-            let data: NSData? = try Keychain.get(account: account, service: testServiceName)
+            let data: Data? = try Keychain.get(account: account, service: testServiceName)
 
             XCTAssertNil(data)
         } catch let error {
