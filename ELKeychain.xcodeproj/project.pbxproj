@@ -168,7 +168,6 @@
 					};
 					17137CE91CFDF33100AB46DD = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = DXZ5VF8836;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -382,7 +381,7 @@
 		17137CF81CFDF33100AB46DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = DXZ5VF8836;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ELKeychainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychainTests;
@@ -394,7 +393,7 @@
 		17137CF91CFDF33100AB46DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = DXZ5VF8836;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ELKeychainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychainTests;
@@ -480,7 +479,7 @@
 		EAA730361D64FD0D006CAFB0 /* QADeployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = DXZ5VF8836;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ELKeychainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychainTests;
