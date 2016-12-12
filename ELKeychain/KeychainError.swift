@@ -21,9 +21,7 @@ public enum KeychainError: Error {
     case decodeFailure
     case authenticationFailure
     case badParameters
-}
 
-extension KeychainError {
     init?(status: OSStatus) {
         switch status {
         case errSecSuccess: return nil
