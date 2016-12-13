@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum KeychainError: ErrorType {
+public enum KeychainError: Error {
     case unexpectedFailure
     case failedToEncodeStringAsData
     case failedToCreateAccessControl
@@ -21,9 +21,7 @@ public enum KeychainError: ErrorType {
     case decodeFailure
     case authenticationFailure
     case badParameters
-}
 
-extension KeychainError {
     init?(status: OSStatus) {
         switch status {
         case errSecSuccess: return nil
@@ -36,7 +34,7 @@ extension KeychainError {
         case errSecInteractionNotAllowed: self = .interactionNotAllowed
         case errSecDecode: self = .decodeFailure
         case errSecAuthFailed: self = .authenticationFailure
-        default: self = unexpectedFailure
+        default: self = .unexpectedFailure
         }
     }
 }
