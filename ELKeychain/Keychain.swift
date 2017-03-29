@@ -169,6 +169,6 @@ extension Keychain {
             return nil
         }
         
-        return NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
+        return NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String?
     }
 }
