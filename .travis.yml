@@ -1,4 +1,4 @@
 language: objective-c
 osx_image: xcode8.3
 script:
-   - xcodebuild -project ELKeychain.xcodeproj -scheme ELKeychain -sdk iphonesimulator test -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0'
+   - xcodebuild -project ELKeychain.xcodeproj -scheme ELKeychain -sdk iphonesimulator test -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3' CODE_SIGNING_REQUIRED=NO
