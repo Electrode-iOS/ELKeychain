@@ -1,3 +1,7 @@
+# [2.0.1](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v2.0.1)
+
+- Resolve Xcode 8.3 warnings
+
 # [2.0.0](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v2.0.0)
 
 - Migrated to Swift 3
