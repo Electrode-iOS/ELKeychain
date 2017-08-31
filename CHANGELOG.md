@@ -1,3 +1,7 @@
+# [2.0.2](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v2.0.2)
+
+- Use default settings for bitcode
+
 # [2.0.1](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v2.0.1)
 
 - Resolve Xcode 8.3 warnings

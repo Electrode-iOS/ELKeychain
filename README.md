@@ -1,6 +1,6 @@
 # ELKeychain
 
-[![Version](https://img.shields.io/badge/version-v2.0.1-blue.svg)](https://github.com/Electrode-iOS/ELKeychain/releases/latest)
+[![Version](https://img.shields.io/badge/version-v2.0.2-blue.svg)](https://github.com/Electrode-iOS/ELKeychain/releases/latest)
 [![Build Status](https://travis-ci.org/Electrode-iOS/ELKeychain.svg?branch=master)](https://travis-ci.org/Electrode-iOS/ELKeychain)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -17,7 +17,7 @@ ELKeychain requires Swift 3 and Xcode 8.
 Install with [Carthage](https://github.com/Carthage/Carthage) by adding the framework to your project's [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile).
 
 ```
-github "Electrode-iOS/ELKeychain" ~> 2.0.1
+github "Electrode-iOS/ELKeychain" ~> 2.0.2
 ```
 
 ### Manual
