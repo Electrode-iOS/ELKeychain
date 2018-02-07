@@ -1,6 +1,5 @@
 # ELKeychain
 
-[![Version](https://img.shields.io/badge/version-v2.0.2-blue.svg)](https://github.com/Electrode-iOS/ELKeychain/releases/latest)
 [![Build Status](https://travis-ci.org/Electrode-iOS/ELKeychain.svg?branch=master)](https://travis-ci.org/Electrode-iOS/ELKeychain)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -8,7 +7,7 @@ A Swift framework for storing, retrieving, and removing generic password items i
 
 ## Requirements
 
-ELKeychain requires Swift 3 and Xcode 8.
+ELKeychain requires Swift 4 and Xcode 9.2.
 
 ## Installation
 
@@ -17,7 +16,7 @@ ELKeychain requires Swift 3 and Xcode 8.
 Install with [Carthage](https://github.com/Carthage/Carthage) by adding the framework to your project's [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile).
 
 ```
-github "Electrode-iOS/ELKeychain" ~> 2.0.2
+github "Electrode-iOS/ELKeychain"
 ```
 
 ### Manual
