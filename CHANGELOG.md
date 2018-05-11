@@ -1,3 +1,7 @@
+# [3.0.1](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v3.0.1)
+
+- Resolve `Swift 3 @objc inference is deprecated` warning
+
 # [3.0.0](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v3.0.0)
 
 - Migrate to Swift 4
