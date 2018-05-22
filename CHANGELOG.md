@@ -1,3 +1,7 @@
+# [3.0.2](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v3.0.2)
+
+- Xcode 9.3 updates
+
 # [3.0.1](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v3.0.1)
 
 - Resolve `Swift 3 @objc inference is deprecated` warning
