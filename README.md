@@ -23,6 +23,12 @@ github "Electrode-iOS/ELKeychain"
 
 Install manually by adding `ELKeychain.xcodeproj` to your project and configuring your target to link `ELKeychain.framework`.
 
+There are two target that builds `ELKeychain.framework`.
+1. `ELKeychain`: Creates dynamicly linked `ELKeychain.framework.`
+2. `ELKeychain_static`: Creates staticly linked `ELKeychain.framework`.
+
+Both targets build the same product (`ELKeychain.framework`), thus linking the same app against both `ELKeychain` and `ELKeychain_static` should be avoided.
+
 ## Usage
 
 ### Storing a Generic Password Item
