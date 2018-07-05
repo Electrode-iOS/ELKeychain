@@ -20,6 +20,12 @@
 		17B5BCA01D92E0980034823A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B5BC9E1D92E0980034823A /* Main.storyboard */; };
 		17B5BCA21D92E0980034823A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B5BCA11D92E0980034823A /* Assets.xcassets */; };
 		17B5BCA51D92E0980034823A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B5BCA31D92E0980034823A /* LaunchScreen.storyboard */; };
+		3E51BF2220EAD78F0073F501 /* AccessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723BAFE1D2D805600394EF8 /* AccessControl.swift */; };
+		3E51BF2320EAD78F0073F501 /* AccessControlConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723BB001D2D806200394EF8 /* AccessControlConvertible.swift */; };
+		3E51BF2420EAD78F0073F501 /* AccessControlProtectionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171DC9181D24399A0074741D /* AccessControlProtectionPolicy.swift */; };
+		3E51BF2520EAD78F0073F501 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17137CFC1CFDF37400AB46DD /* Keychain.swift */; };
+		3E51BF2620EAD78F0073F501 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171DC9161D242AFE0074741D /* KeychainError.swift */; };
+		3E8BC58620EC4893002F31E9 /* ELKeychain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 17137CE31CFDF33100AB46DD /* ELKeychain.h */; };
 		3E8CA3A520E57D9C00CBDA69 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17137CFC1CFDF37400AB46DD /* Keychain.swift */; };
 		3E8CA3A620E57D9C00CBDA69 /* AccessControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723BAFE1D2D805600394EF8 /* AccessControl.swift */; };
 		3E8CA3A720E57D9C00CBDA69 /* AccessControlConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723BB001D2D806200394EF8 /* AccessControlConvertible.swift */; };
@@ -45,6 +51,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3E51BF1820EAD7750073F501 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				3E8BC58620EC4893002F31E9 /* ELKeychain.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		17137CE01CFDF33100AB46DD /* ELKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17137CE31CFDF33100AB46DD /* ELKeychain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELKeychain.h; sourceTree = "<group>"; };
@@ -65,6 +84,7 @@
 		17B5BCA41D92E0980034823A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17B5BCA61D92E0980034823A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17B5BCAD1D92E0BD0034823A /* ELKeychainTestHost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ELKeychainTestHost.entitlements; sourceTree = "<group>"; };
+		3E51BF1A20EAD7750073F501 /* libELKeychain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libELKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8CA3B220E57D9C00CBDA69 /* ELKeychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ELKeychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,6 +105,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		17B5BC951D92E0980034823A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E51BF1720EAD7750073F501 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -118,6 +145,7 @@
 				17137CEA1CFDF33100AB46DD /* ELKeychainTests.xctest */,
 				17B5BC981D92E0980034823A /* ELKeychainTestHost.app */,
 				3E8CA3B220E57D9C00CBDA69 /* ELKeychain.framework */,
+				3E51BF1A20EAD7750073F501 /* libELKeychain.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -235,6 +263,23 @@
 			productReference = 17B5BC981D92E0980034823A /* ELKeychainTestHost.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3E51BF1920EAD7750073F501 /* ELKeychainLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E51BF2120EAD7750073F501 /* Build configuration list for PBXNativeTarget "ELKeychainLib" */;
+			buildPhases = (
+				3E51BF1620EAD7750073F501 /* Sources */,
+				3E51BF1720EAD7750073F501 /* Frameworks */,
+				3E51BF1820EAD7750073F501 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ELKeychainLib;
+			productName = ELKeychainLib;
+			productReference = 3E51BF1A20EAD7750073F501 /* libELKeychain.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		3E8CA3A320E57D9C00CBDA69 /* ELKeychain_static */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E8CA3AE20E57D9C00CBDA69 /* Build configuration list for PBXNativeTarget "ELKeychain_static" */;
@@ -259,7 +304,7 @@
 		17137CD71CFDF33100AB46DD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Walmart;
 				TargetAttributes = {
@@ -282,6 +327,11 @@
 							};
 						};
 					};
+					3E51BF1920EAD7750073F501 = {
+						CreatedOnToolsVersion = 9.3;
+						DevelopmentTeam = DXZ5VF8836;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 17137CDA1CFDF33100AB46DD /* Build configuration list for PBXProject "ELKeychain" */;
@@ -301,6 +351,7 @@
 				3E8CA3A320E57D9C00CBDA69 /* ELKeychain_static */,
 				17137CE91CFDF33100AB46DD /* ELKeychainTests */,
 				17B5BC971D92E0980034823A /* ELKeychainTestHost */,
+				3E51BF1920EAD7750073F501 /* ELKeychainLib */,
 			);
 		};
 /* End PBXProject section */
@@ -366,6 +417,18 @@
 			files = (
 				17B5BC9D1D92E0980034823A /* ViewController.swift in Sources */,
 				17B5BC9B1D92E0980034823A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E51BF1620EAD7750073F501 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E51BF2220EAD78F0073F501 /* AccessControl.swift in Sources */,
+				3E51BF2320EAD78F0073F501 /* AccessControlConvertible.swift in Sources */,
+				3E51BF2420EAD78F0073F501 /* AccessControlProtectionPolicy.swift in Sources */,
+				3E51BF2520EAD78F0073F501 /* Keychain.swift in Sources */,
+				3E51BF2620EAD78F0073F501 /* KeychainError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +717,77 @@
 			};
 			name = Release;
 		};
+		3E51BF1E20EAD7750073F501 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DXZ5VF8836;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ELKeychain/Info.plist;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychain;
+				PRODUCT_NAME = ELKeychain;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3E51BF1F20EAD7750073F501 /* QADeployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DXZ5VF8836;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ELKeychain/Info.plist;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychain;
+				PRODUCT_NAME = ELKeychain;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = QADeployment;
+		};
+		3E51BF2020EAD7750073F501 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DXZ5VF8836;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ELKeychain/Info.plist;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.walmartlabs.ELKeychain;
+				PRODUCT_NAME = ELKeychain;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		3E8CA3AF20E57D9C00CBDA69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -858,6 +992,16 @@
 				17B5BCA81D92E0980034823A /* Debug */,
 				17B5BCA91D92E0980034823A /* QADeployment */,
 				17B5BCAA1D92E0980034823A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E51BF2120EAD7750073F501 /* Build configuration list for PBXNativeTarget "ELKeychainLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E51BF1E20EAD7750073F501 /* Debug */,
+				3E51BF1F20EAD7750073F501 /* QADeployment */,
+				3E51BF2020EAD7750073F501 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
