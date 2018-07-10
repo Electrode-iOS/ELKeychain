@@ -1,3 +1,7 @@
+# [3.1.0](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v3.1.0)
+
+- Add a target that builds a static framework for iOS platform.
+
 # [3.0.2](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v3.0.2)
 
 - Xcode 9.3 updates
