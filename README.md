@@ -7,7 +7,7 @@ A Swift framework for storing, retrieving, and removing generic password items i
 
 ## Requirements
 
-ELKeychain requires Swift 4 and Xcode 9.2.
+ELKeychain requires Swift 5 and Xcode 10.2.
 
 ## Installation
 

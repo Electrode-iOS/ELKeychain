@@ -114,7 +114,7 @@ extension Keychain {
         let query = [kSecClass as String : kSecClassGenericPassword,
                      kSecAttrAccount as String : account,
                      kSecAttrService as String: service,
-                     kSecReturnData as String : kCFBooleanTrue,
+                     kSecReturnData as String : (kCFBooleanTrue != nil) as Bool,
                      kSecMatchLimit as String : kSecMatchLimitOne] as [String : Any]
         
         let item = try copy(matching: query as CFDictionary)
