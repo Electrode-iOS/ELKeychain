@@ -1,3 +1,7 @@
+# [4.0.0](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v4.0.0)
+
+- Migrate to Swift 5
+
 # [3.1.0](https://github.com/Electrode-iOS/ELKeychain/releases/tag/v3.1.0)
 
 - Add a target that builds a static framework for iOS platform.
