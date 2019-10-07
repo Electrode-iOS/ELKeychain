@@ -88,15 +88,20 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - parameter accessControl: The access control settings of the password item.
      */
-    public static func set(_ data: Data, account: String, service: String, accessControl: AccessControlConvertible? = nil) throws {
-        var attributes: [String: AnyObject] = [
+    public static func set(_ data: Data, account: String, service: String, accessGroup: String? = nil, accessControl: AccessControlConvertible? = nil) throws {
+        var attributes: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: account as AnyObject,
-            kSecAttrService as String: service as AnyObject,
-            kSecValueData as String: data as AnyObject]
+            kSecAttrAccount as String: account,
+            kSecAttrService as String: service,
+            kSecValueData as String: data
+        ]
                 
         if let accessControl = accessControl?.accessControl {
             attributes[kSecAttrAccessControl as String] = accessControl
+        }
+
+        if let accessGroup = accessGroup {
+            attributes[kSecAttrAccessGroup as String] = accessGroup
         }
         
         _ = try? delete(matching: attributes as CFDictionary)
@@ -110,12 +115,18 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - returns: The generic password value if found. Returns nil when the password cannot be found.
      */
-    public static func get(account: String, service: String) throws -> Data? {
-        let query = [kSecClass as String : kSecClassGenericPassword,
-                     kSecAttrAccount as String : account,
-                     kSecAttrService as String: service,
-                     kSecReturnData as String : (kCFBooleanTrue != nil) as Bool,
-                     kSecMatchLimit as String : kSecMatchLimitOne] as [String : Any]
+    public static func get(account: String, service: String, accessGroup: String? = nil) throws -> Data? {
+        var query: [String : Any] = [
+            kSecClass as String : kSecClassGenericPassword,
+            kSecAttrAccount as String : account,
+            kSecAttrService as String: service,
+            kSecReturnData as String : (kCFBooleanTrue != nil) as Bool,
+            kSecMatchLimit as String : kSecMatchLimitOne
+        ]
+
+        if let accessGroup = accessGroup {
+            query[kSecAttrAccessGroup as String] = accessGroup
+        }
         
         let item = try copy(matching: query as CFDictionary)
         
@@ -129,11 +140,16 @@ extension Keychain {
      - parameter service: The service associated with the password item.
      - returns: Returns true if the password was deleted successfully.
      */
-    public static func delete(account: String, service: String) throws {
-        let query = [
+    public static func delete(account: String, service: String, accessGroup: String? = nil) throws {
+        var query: [String : Any] = [
             kSecClass as String : kSecClassGenericPassword,
             kSecAttrAccount as String : account,
-            kSecAttrService as String : service] as [String : Any]
+            kSecAttrService as String : service
+        ]
+
+        if let accessGroup = accessGroup {
+            query[kSecAttrAccessGroup as String] = accessGroup
+        }
         
         try delete(matching: query as CFDictionary)
     }
